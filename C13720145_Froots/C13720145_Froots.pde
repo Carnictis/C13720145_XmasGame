@@ -234,3 +234,105 @@ void play()
 }//end of play method
 
 //__________________________________________
+
+//function for when the mouse is moved
+void mouseMoved()
+{
+   dinosaur.mouse_Moved(mouseX);
+}//end of moved
+
+//__________________________________________
+
+//function for when mouse is Pressed
+void mousePressed()
+{
+   if(scene==0)//if the scene is 0, start the game
+   {
+     scene=1;
+   }//end if scene 0
+   if(scene==1)// if the scene is 1, shoot a projectile
+   {
+     //if user click shoot
+     dinosaur.shoot();
+     //play the sound when projectile is shot
+     player.play();
+   }// end if scene 1
+
+  if(scene==2)// if game over screen, reset everything
+   {
+     scene=0;
+     //set new score and new lives for new game
+     dinosaur.setLives(3);
+     dinosaur.setScores(0);
+     //clear all fruits
+     fruits.clear();
+   }//end if scene 2
+   
+}//end  mouse pressed
+
+//__________________________________________
+
+
+  //when the mouse is released
+  void mouseReleased()
+  {  
+    //as the file has been closed it need to be reloaded
+    player = minim.loadFile("sound//");// insert soundfile later
+  }// end of mouse released
+
+
+  void keyPressed() 
+{
+    if (key == CODED)
+    {
+      //if left button pressed...
+      if (keyCode == LEFT)
+      {
+         direction=0;
+         timer=0;
+      } // end left
+      //if right button pressed...
+      if (keyCode == RIGHT) 
+      {
+          direction=1;
+          timer=0;
+      }// end right
+    }// end coded
+    //user can use s to shoot also, press s, 
+    //play sound and make projectile
+    if (key =='s') 
+    {
+       dinosaur.shoot();
+        player.play();
+   }//end key pressed s
+   
+}//end void keyPressed
+
+//__________________________________________
+
+
+void keyReleased() 
+{
+ if (key == CODED)
+ {
+      //if left button pressed...
+      if (keyCode == LEFT)
+      {
+         timer=0;   
+      } //end left
+      //if right button pressed...
+      if (keyCode == RIGHT) 
+      {
+         timer=0;
+      }//end right
+      
+  }//end of key coded
+  
+  player = minim.loadFile("sound//");
+  
+}// end key released
+  
+  //__________________________________________
+
+//end of required methods
+//now for other game object classes.
