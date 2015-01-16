@@ -6,6 +6,11 @@
 
 //Set Up comments to go in here
 
+//sketches needed:
+//three bgs
+//four dinos
+//three fruits
+
 //The initial premise of this game is to use a dinosuar to blast bubbles
 // or similar at falling enemies so he is free to catch fruit
 //It will use the trackpad or mouse to control and click to shoot
@@ -40,7 +45,7 @@ String message="";  //variable for any messages
   {
     size (900,700);
     
-    background = loadImage("images//"); // insert names of background when ready
+    BackGround = loadImage("images//"); // insert names of background when ready
     
     StartBG = loadImage("images//"); //as above, images will go into the image folder of the sketch
     
@@ -167,7 +172,65 @@ void startWelcomeScreen()
 
 void play()
 {
-
+  background(BackGround) = loadImage"images//"); //load background image
+  
+  textFont (font,35); //set new font
+  
+  fill(255);
+  text("Score: "+dinosaur.getScores(),20, 25);
+  
+  text("Lives: "+dinosaur.getLives(),750, 25); 
+  
+  dinosaur.drawDinosaur(); //draw dinosaur sprite
+  
+  dinosaur.moveDinosaur(direction); //move dinosaur
+  
+  if(FruitTimer>40) //once these milliseconds have passed generate a new fruit
+  {
+      generateNewFruits(); //generate new fruits
+      
+      FruitTimer=0;
+      
+  }//end if fruit timer
+  if (dinosaur.getScores()>5&& FruitTimer>30) //if conditions to increase the number of fruits once the score increases
+  {
+    generateNewFruits();     
+    FruitTimer=0;
+  }//this is the end of the if that will make the game trickier
+  
+  if (dinosaur.getScores()>10&& FruitTimer>20)
+  {
+    generateNewFruits();     
+    FruitTimer=0;
+  }// end of second time frame difficulty tier
+  
+  if (dinosaur.getScores()>15&& FruitTimer>10)
+  {
+    generateNewFruits();     
+    FruitTimer=0;
+  }// end of third time frame difficulty tier
+  
+  FruitTimer++;
+  
+  for(int i=0;i<fruits.size();i++)//draw all fruits in an array list
+  {
+    fruits.get(i).drawFruit();
+      fruits.get(i).fall(); //manipulate and move fruit
+  }//end for, fruit array list
+  
+  //now to check for collision from dino bubble with enemy sprites
+  dinosaur.collideBubbleWithEnemies(fruits);
+  
+  //now to check for collision from dino itself with enemy sprites
+  dinosaur.collideDinoWithEnemies(fruits);
+  
+  timer++;
+  if(timer>20)
+  {
+      direction=-1;
+  }//end of timer check
+  
+  
 }//end of play method
 
 //__________________________________________
