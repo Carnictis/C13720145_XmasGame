@@ -1,6 +1,6 @@
 //this class will check for collision of any moving objects
 //with the player sprite
-
+//Sprite work today in Pixaki
 class MobileEntity
 {  
     float xPos; //the x position of Mobile Entity
