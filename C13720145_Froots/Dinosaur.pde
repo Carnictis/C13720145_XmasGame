@@ -70,7 +70,7 @@ class Dinosaur extends MobileEntity
          {
              if(fruits.get(i).collide(this))
              {
-               if(fruits.get(i).getIsGoodFruit())
+               if(fruits.get(i).findIsGoodFruit())
                {
                   this.scores++;                      //if Dinosaur collides  With Fire Fruit add score
                }
@@ -96,7 +96,7 @@ class Dinosaur extends MobileEntity
             for(int j=0;j<fruits.size();j++)
             {
               if(bubbles.get(i).collide(fruits.get(j)) && 
-                 !fruits.get(j).getIsGoodFruit())
+                 !fruits.get(j).findIsGoodFruit())
                  {
                  bubbles.remove(i);                    //delete bubbles from their list
                  fruits.remove(j);                   //delete fruits from their list

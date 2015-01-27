@@ -29,18 +29,18 @@ class Fruit extends MobileEntity
      //this collection of ifs will increase speed upon 
      //score being greater than
      //5,11 and 16
-     if()dinosaur.getScores()>5)
+     if(dinosaur.getScores()>5)
      {
        this.yPos++;
      }//end >5
       
-     if()dinosaur.getScores()>11)
+     if(dinosaur.getScores()>11)
      {
        this.yPos++;
        
      }//end >11
      
-     if()dinosaur.getScores()>16)
+     if(dinosaur.getScores()>16)
      {
        this.yPos++;
        

@@ -5,7 +5,7 @@
 //Christmas Assignment 2014/2015
 
 //Set Up comments to go in here
-
+//Program "Threatens" to compile, just need to send in sketches.
 //sketches needed:
 //three bgs
 //four dinos
@@ -39,7 +39,7 @@ String message="";  //variable for any messages required
   Minim minim;  //sounds objects
   AudioPlayer player;
   
-  Minim minimCrash;
+  Minim minimBump;
   AudioPlayer playerCollide;
   
   
@@ -69,7 +69,7 @@ String message="";  //variable for any messages required
     
     
     minim = new Minim(this);//load sound for collide with bad sprite
-    playerBump = minimBump.loadFile("sound//Bump.mp3");// need collision sound 
+    playerCollide = minimBump.loadFile("sound//Bump.mp3");// need collision sound 
   }//end of set up
   
   
@@ -83,6 +83,8 @@ String message="";  //variable for any messages required
    int randXPos = (int) random(0,7);
    
    int randomSize= (int) random(1,3);
+   
+   boolean isGoodFruit=false; //check to see if is a collectible
    
    //these above three randomisers will choose a random sprite,
    //place at a random X position
@@ -118,12 +120,12 @@ String message="";  //variable for any messages required
     {
       //play
        play();
-       if(dinosaur.hasCollided())   //check if dino collides with obstacle
+       if(dinosaur.getIsCollide())   //check if dino collides with obstacle
        {
          //play sound
-          playerBump.play();
+          playerCollide.play();
           //load sound again
-          playerBump = minimBumploadFile("sound//");
+          playerCollide = minimBump.loadFile("sound//Bump.mp3");
        }// end if collision with bad sprite
     }//end if Check for Lives
     
@@ -176,7 +178,7 @@ void startWelcomeScreen()
 
 void play()
 {
-  background(BackGround) = loadImage"images//"); //load background image
+  background(LevelBG); //= loadImage"images//"); //load background image
   
   textFont (font,35); //set new font
   
@@ -223,10 +225,10 @@ void play()
   }//end for, fruit array list
   
   //now to check for collision from dino bubble with enemy sprites
-  dinosaur.collideBubbleWithEnemies(fruits);
+  dinosaur.collideBubbleWithFruit(fruits);
   
   //now to check for collision from dino itself with enemy sprites
-  dinosaur.collideDinoWithEnemies(fruits);
+  dinosaur.collideDinosaurWithFruit(fruits);
   
   timer++;
   if(timer>20)
