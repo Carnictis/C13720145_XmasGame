@@ -14,6 +14,9 @@
 //The initial premise of this game is to use a dinosuar to blast bubbles
 // or similar at falling enemies so he is free to catch fruit
 //It will use the trackpad or mouse to control and click to shoot
+
+import ddf.minim.*; //use this to import  sund library
+
 PImage LevelBG, StartBG, EndBG; // images for the Splashes
 //these have yet to be drawn
 
@@ -27,7 +30,7 @@ int FruitTimer=0; //timer for generating new falling fruits
 
 int direction = -1;
 
-int scene =0;
+int scene =0; //this variable will guide the text and backgrounds
 
 ArrayList<Fruit> fruits=new ArrayList<Fruit>();
 
@@ -102,7 +105,7 @@ String message="";  //variable for any messages
  {
    if(scene==0)
    {
-     startWelcomeScreen()
+     startWelcomeScreen();
      
    }//end if scene==0
 
