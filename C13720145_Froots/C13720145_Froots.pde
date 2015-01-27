@@ -22,7 +22,7 @@ PImage LevelBG, StartBG, EndBG; // images for the Splashes
 
 PFont font; //font in use
 
-Dinosaur dinosaur; // create the Dinosaur
+Dinosaur dinosaur; // create the Dinosaur Sprites Players
 
 int timer = 0; //timer
 
@@ -34,7 +34,7 @@ int scene =0; //this variable will guide the text and backgrounds
 
 ArrayList<Fruit> fruits=new ArrayList<Fruit>();
 
-String message="";  //variable for any messages
+String message="";  //variable for any messages required
 
   Minim minim;  //sounds objects
   AudioPlayer player;
@@ -46,11 +46,11 @@ String message="";  //variable for any messages
   //now setup
   void setup()
   {
-    size (900,700);
+    size (650,857);
     
-    BackGround = loadImage("images//"); // insert names of background when ready
+    LevelBG = loadImage("images//BackGround.jpeg"); // insert names of background when ready
     
-    StartBG = loadImage("images//"); //as above, images will go into the image folder of the sketch
+    StartBG = loadImage("images//StartBG.jpeg"); //as above, images will go into the image folder of the sketch
     
     EndBG = loadImage("images//");
     
@@ -65,10 +65,11 @@ String message="";  //variable for any messages
     generateNewFruits(); // create and add new fruits to the array
     
     minim = new Minim(this);//load sound for shoot
-    player = minim.loadFile("sound//");//need bubble sound
+    player = minim.loadFile("sound//BubblePop.wav");// bubble sound
+    
     
     minim = new Minim(this);//load sound for collide with bad sprite
-    playerBump = minimBump.loadFile("sound//");// need collision sound 
+    playerBump = minimBump.loadFile("sound//Bump.mp3");// need collision sound 
   }//end of set up
   
   
@@ -92,7 +93,7 @@ String message="";  //variable for any messages
        isGoodFruit=true; //Good/ Edible is true and generete the fruit
     }
    
-   Fruit fruit= new Fruit(randXPos*130+20,0,"images//Fruit"+randImage+".png",
+   Fruit fruit= new Fruit(randXPos*130+20,0,"images//GoodFruit"+randImage+".png",
     70*randomSize,70*randomSize,isGoodFruit);  
       
    fruits.add(fruit); //add fruit to the fruits array list
@@ -186,7 +187,7 @@ void play()
   
   dinosaur.drawDinosaur(); //draw dinosaur sprite
   
-  dinosaur.moveDinosaur(direction); //move dinosaur
+  dinosaur.move(direction); //move dinosaur
   
   if(FruitTimer>40) //once these milliseconds have passed generate a new fruit
   {
