@@ -16,7 +16,7 @@
 // or similar at falling enemies so he is free to catch fruit
 //It will use the trackpad or mouse to control and click to shoot
 
-import ddf.minim.*; //use this to import  sund library
+import ddf.minim.*; //use this to import  sound library
 
 PImage LevelBG, MenuBG, EndBG; // images for the Splashes
 //these have yet to be drawn
@@ -42,11 +42,9 @@ String message="";  //variable for any messages required
   
   Minim minimBump;
   AudioPlayer playerCollide;
-  
-  //Minim minimTrack;
-  //AudioPlayer music;
-  
-  
+
+
+
   //now setup
   void setup()
   {
@@ -137,7 +135,7 @@ String message="";  //variable for any messages required
           playerCollide = minimBump.loadFile("sound//Bump.mp3");
        }// end if collision with bad sprite
     }//end if Check for Lives
-    
+   
   }// end if scene ==1
   
   else
