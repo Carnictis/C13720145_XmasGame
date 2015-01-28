@@ -3,6 +3,7 @@
 //DT228_2, Group B
 
 //Christmas Assignment 2014/2015
+//testing
 
 //Set Up comments to go in here
 //Program "Threatens" to compile, just need to send in sketches.
@@ -46,17 +47,17 @@ String message="";  //variable for any messages required
   //now setup
   void setup()
   {
-    size (650,857);
+    size (650,867);
     
     LevelBG = loadImage("images//BackGround.jpeg"); // insert names of background when ready
     
-    StartBG = loadImage("images//StartBG.jpeg"); //as above, images will go into the image folder of the sketch
+    StartBG = loadImage("images//StartBG.PNG"); //as above, images will go into the image folder of the sketch
     
-    EndBG = loadImage("images//");
+    EndBG = loadImage("images//EndBG.jpeg");
     
-    int randDino = (int)random(1,4); // choose a random dinosaur sprite
+    int randDino = (int)random(1,7); // choose a random dinosaur sprite
     
-    dinosaur = new Dinosaur(300,500,"images//dino"+randDino+".png",150,150);
+    dinosaur = new Dinosaur(300,500,"images//dino"+randDino+".PNG",150,150);
     //the above line will draw a dino at the given xy and 
     //concatenate a number twixt 1&4 and show that dino
     
@@ -68,7 +69,7 @@ String message="";  //variable for any messages required
     player = minim.loadFile("sound//BubblePop.wav");// bubble sound
     
     
-    minim = new Minim(this);//load sound for collide with bad sprite
+    minimBump = new Minim(this);//load sound for collide with bad sprite
     playerCollide = minimBump.loadFile("sound//Bump.mp3");// need collision sound 
   }//end of set up
   
@@ -95,7 +96,7 @@ String message="";  //variable for any messages required
        isGoodFruit=true; //Good/ Edible is true and generete the fruit
     }
    
-   Fruit fruit= new Fruit(randXPos*130+20,0,"images//GoodFruit"+randImage+".png",
+   Fruit fruit= new Fruit(randXPos*130+20,0,"images//GoodFruit"+randImage+".PNG",
     70*randomSize,70*randomSize,isGoodFruit);  
       
    fruits.add(fruit); //add fruit to the fruits array list
@@ -149,11 +150,11 @@ String message="";  //variable for any messages required
      background(EndBG);
      textFont(font, 80);
      fill(255,255,255);
-     text(message,500, 100);
+     text(message,100, 100);
      textFont(font, 50);
      text("Click to Start Over!",60, 600);
      int randDino= (int)random(1,7);//generate new dinosaur for next game
-     dinosaur = new Dinosaur(300,500,"images//dino"+randDino+".png",150,150); //choose the sprite
+     dinosaur = new Dinosaur(300,500,"images//dino"+randDino+".PNG",150,150); //choose the sprite
      }//end if scene ==2 
   
   }//end draw
@@ -178,7 +179,7 @@ void startWelcomeScreen()
 
 void play()
 {
-  background(LevelBG); //= loadImage"images//"); //load background image
+  background(LevelBG); //load background image
   
   textFont (font,35); //set new font
   
@@ -283,7 +284,7 @@ void mousePressed()
   void mouseReleased()
   {  
     //as the file has been closed it need to be reloaded
-    player = minim.loadFile("sound//");// insert soundfile later
+    player = minim.loadFile("sound//BubblePop.wav");// insert soundfile later
   }// end of mouse released
 
 
@@ -334,7 +335,7 @@ void keyReleased()
       
   }//end of key coded
   
-  player = minim.loadFile("sound//");
+  player = minim.loadFile("sound//BubblePop.wav");
   
 }// end key released
   

@@ -72,16 +72,16 @@ class Dinosaur extends MobileEntity
              {
                if(fruits.get(i).findIsGoodFruit())
                {
-                  this.scores++;                      //if Dinosaur collides  With Fire Fruit add score
-               }
+                  this.scores++;                      //if Dinosaur collides  With Good Fruit add score
+               }// end if
                else
                {
-                  this.lives--;                   // //if Dinosaur collides  With other  Fruit sub lives
+                  this.lives--;                   // //if Dinosaur collides  With other  Enemies sub lives
                   isCollide=true;
-               }
+               }// end else
                fruits.remove(i);                 //remove enemy sprite from list
 
-             }
+             }//end if
          }
     }// end Dino Fruit Collision Check
     
