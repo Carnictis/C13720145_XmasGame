@@ -18,7 +18,7 @@
 
 import ddf.minim.*; //use this to import  sund library
 
-PImage LevelBG, StartBG, EndBG; // images for the Splashes
+PImage LevelBG, MenuBG, EndBG; // images for the Splashes
 //these have yet to be drawn
 
 PFont font; //font in use
@@ -43,6 +43,9 @@ String message="";  //variable for any messages required
   Minim minimBump;
   AudioPlayer playerCollide;
   
+  //Minim minimTrack;
+  //AudioPlayer music;
+  
   
   //now setup
   void setup()
@@ -51,15 +54,15 @@ String message="";  //variable for any messages required
     
     LevelBG = loadImage("images//BackGround.jpeg"); // insert names of background when ready
     
-    StartBG = loadImage("images//StartBG.PNG"); //as above, images will go into the image folder of the sketch
+    MenuBG = loadImage("images//MenuBG.PNG"); //as above, images will go into the image folder of the sketch
     
-    EndBG = loadImage("images//EndBG.jpeg");
+    EndBG = loadImage("images//MenuBG.PNG");//MenuBG.PNG
     
     int randDino = (int)random(1,7); // choose a random dinosaur sprite
     
-    dinosaur = new Dinosaur(300,500,"images//dino"+randDino+".PNG",150,150);
+    dinosaur = new Dinosaur(100,630,"images//dino"+randDino+".PNG",150,150);
     //the above line will draw a dino at the given xy and 
-    //concatenate a number twixt 1&4 and show that dino
+    //concatenate a number twixt 1&7 and show that dino
     
     font = loadFont("HillHouse.vlw"); // load up new font
     
@@ -67,10 +70,15 @@ String message="";  //variable for any messages required
     
     minim = new Minim(this);//load sound for shoot
     player = minim.loadFile("sound//BubblePop.wav");// bubble sound
+    //sounds
     
     
     minimBump = new Minim(this);//load sound for collide with bad sprite
     playerCollide = minimBump.loadFile("sound//Bump.mp3");// need collision sound 
+    
+    
+    //minimTrack = new Minim(this);//music
+    //music = minimTrack.loadfile("sound//parasol.mp3");
   }//end of set up
   
   
@@ -79,7 +87,7 @@ String message="";  //variable for any messages required
  //now implement a method to add new Fruits 
  void generateNewFruits()
  {
-   int randImage = (int)random (1,4);
+   int randImage = (int)random (1,4); //generate a random number for the falling item
    
    int randXPos = (int) random(0,7);
    
@@ -147,12 +155,13 @@ String message="";  //variable for any messages required
   
    if(scene==2)
   {
+    //music.play();
      background(EndBG);
      textFont(font, 80);
-     fill(255,255,255);
-     text(message,100, 100);
+     fill(255);
+     text(message,100,100);
      textFont(font, 50);
-     text("Click to Start Over!",60, 600);
+     text("Click to Start Over!",60, 220);
      int randDino= (int)random(1,7);//generate new dinosaur for next game
      dinosaur = new Dinosaur(300,500,"images//dino"+randDino+".PNG",150,150); //choose the sprite
      }//end if scene ==2 
@@ -164,10 +173,10 @@ String message="";  //variable for any messages required
 
 void startWelcomeScreen()
 {
-  background(StartBG);
+  background(MenuBG);
   textFont(font, 50);
   fill(255);
-  text("Froots",70,300);
+  text("Froots",100,100);
   textFont(font,40);
   text("Click to Play!",60,500);
 
